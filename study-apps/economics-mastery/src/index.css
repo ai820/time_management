@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-white;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-800 border border-slate-700 rounded-2xl p-6;
+  }
+
+  .btn-primary {
+    @apply px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 rounded-xl font-medium transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-slate-700 hover:bg-slate-600 rounded-xl font-medium transition-colors;
+  }
+
+  .badge-chapter {
+    @apply px-2 py-0.5 rounded text-xs font-medium bg-emerald-600/20 text-emerald-400 border border-emerald-600/30;
+  }
+
+  /* Flip card styles */
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
