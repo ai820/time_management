@@ -1,6 +1,6 @@
 import { AppState, FlashCard, DailyStats } from '../types';
 
-const KEY = 'econ-mastery-v2';
+const KEY = 'econ-mastery-v3';
 
 const defaultState: AppState = {
   flashcards: [],
@@ -33,8 +33,16 @@ export function initializeCards(defaults: FlashCard[]): void {
   const state = loadState();
   if (state.flashcards.length === 0) {
     state.flashcards = defaults;
-    saveState(state);
+  } else {
+    // Merge: keep SRS state but always update content fields from source data
+    const byId = new Map(state.flashcards.map(c => [c.id, c]));
+    state.flashcards = defaults.map(def => {
+      const saved = byId.get(def.id);
+      if (!saved) return def;
+      return { ...def, lastReviewed: saved.lastReviewed, nextReview: saved.nextReview, correctStreak: saved.correctStreak, easeFactor: saved.easeFactor, interval: saved.interval };
+    });
   }
+  saveState(state);
 }
 
 export function updateStreak(): void {
