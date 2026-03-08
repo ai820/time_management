@@ -1,6 +1,6 @@
 import { AppState, FlashCard, DailyStats } from '../types';
 
-const KEY = 'econ-mastery-v1';
+const KEY = 'econ-mastery-v2';
 
 const defaultState: AppState = {
   flashcards: [],

@@ -1,0 +1,154 @@
+import { FlashCard, PracticeQuestion } from '../../types';
+
+const now = Date.now();
+
+export const flashcards: FlashCard[] = [
+  {
+    id: 'ch06-001', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 1,
+    front: "When does the IMF consider a current account deficit 'too high'?",
+    back: "The IMF considers a CAD 'too high' if it averages over 4% of GDP in the medium to long term, OR above 6% of GDP in the short term.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-002', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "What is the first consequence of a sustained high CAD? (growth of foreign liabilities)",
+    back: "A sustained high CAD over time leads to increased foreign liabilities (both debt and equity). The CA deficit is financed by KFA inflows in the form of foreign debt or by selling equity in Australian property and companies. If the CAD remains high for many years, foreign liabilities accumulate to very large levels, and overseas lenders may become reluctant to lend to or invest in Australia.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-003', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "How does a high CAD lead to increased servicing costs?",
+    back: "High foreign liabilities → larger outflows of interest and dividends on the net primary income account → worsens the CAD. Foreign debt must be serviced through interest payments that vary with interest rates. Foreign lenders may also demand a 'risk premium' on loans to Australia, forcing up interest rates and further widening the NPY deficit.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-004', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "How can a high CAD increase exchange rate volatility?",
+    back: "A high CAD may undermine the confidence of overseas investors in the Australian economy. If confidence falls, demand for the Australian dollar decreases → may result in depreciation of the A$. This exchange rate volatility creates uncertainty for businesses and can worsen the NPY deficit by increasing the A$ value of foreign-currency-denominated debt.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-005', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "How does a high CAD create a constraint on economic growth?",
+    back: "In the longer term, a high CAD may become a 'balance of payments constraint' — a speed limit on growth. Higher economic growth generally increases imports and worsens the CAD. Economies with a CAD problem are forced to limit their growth to the level at which the CAD is sustainable. This means they cannot grow as fast as they could otherwise, particularly compared to economies with stronger current account positions.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-006', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "How does a high CAD lead to more contractionary economic policy?",
+    back: "Governments may respond to a high CAD by using tighter macroeconomic policies (higher interest rates, tighter fiscal policy) and accelerating microeconomic reform to improve competitiveness. In the short run, tighter fiscal and monetary policies reduce economic growth and living standards. The medicine for a high CAD can itself impose economic costs.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-007', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 3,
+    front: "What is the 'loss of international investor confidence' risk from a sustained high CAD?",
+    back: "Economic crises can be triggered by a sudden shift in the attitude of global financial markets towards a country whose external imbalance appears unsustainable. Investor confidence can change suddenly — countries with high CADs and high foreign debt are more vulnerable to such shifts in sentiment. Argentina has experienced recurrent economic crises since 2018 as an example of this risk.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-008', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 3,
+    front: "What argument do some economists make that a high CAD may NOT be harmful?",
+    back: "Some economists argue:\n1. If the government is not contributing to the CAD, external imbalances simply reflect normal market transactions between private agents freely choosing to borrow and lend\n2. A CAD and foreign debt can be beneficial if borrowing from overseas increases investment and helps the economy grow faster\nThey suggest the CAD is simply the result of rational private-sector decisions and does not require policy intervention.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-009', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "Why has Australia's sustained high CAD not caused significant problems in recent years?",
+    back: "Several reasons:\n1. CAD improved significantly during 2010s; first surplus since 1973 achieved in 2019-20\n2. Financial markets tolerated it because natural resource wealth underpins continued strong export growth\n3. Era of globalisation: markets more willing to accept external imbalances\n4. IMF (Feb 2018) identified: reduced import expenditure; increased post-GFC household/business savings; tighter regulatory requirements; sustained low global interest rates reducing servicing costs",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-010', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "What level of CAD does the IMF consider sustainable for Australia in the medium term?",
+    back: "According to the IMF, if Australia keeps its CAD at an average of 2.5–3% of GDP, foreign liabilities would stabilise at approximately 55% of GDP — a level 'broadly consistent with medium-term fundamentals and desirable policies'.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-011', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 3,
+    front: "What warning did Brain and Manning (2017) issue about Australia's CAD?",
+    back: "Brain and Manning, in their report 'Credit Code Red' (2017), warned that Australia's high CAD may still re-emerge as a long-term risk. They noted that a country may sustain an external imbalance for many years before it suddenly becomes a major problem — the apparent stability of Australia's external position does not guarantee it is sustainable indefinitely.",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-012', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "What are the potential future vulnerabilities that could re-open Australia's CAD problem?",
+    back: "1. Adverse developments in the Chinese economy (China = 36.1% of exports; any slowdown heavily impacts commodity demand)\n2. A fall in commodity prices (especially iron ore — Australia's largest export)\n3. Rising global interest rates (would increase interest servicing costs on foreign debt → widen NPY deficit)\n4. Changes in global credit conditions (reduced willingness of foreign lenders to fund Australia's external imbalance)",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-013', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 3,
+    front: "Identify and explain all six consequences of a sustained high CAD.",
+    back: "1. Growth of foreign liabilities: accumulation of foreign debt and equity; lenders may become reluctant\n2. Increased servicing costs: larger NPY outflows; risk premium demanded by lenders raises interest rates\n3. Increased exchange rate volatility: loss of investor confidence → depreciation → uncertainty\n4. Constraint on economic growth: 'balance of payments constraint' limits growth to sustainable level\n5. More contractionary economic policy: governments tighten fiscal/monetary policy → reduces short-term growth\n6. Loss of international investor confidence: sudden shift in market sentiment can trigger economic crisis (e.g. Argentina since 2018)",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+  {
+    id: 'ch06-014', chapter: '4.6', topic: "Consequences of High CAD", difficulty: 2,
+    front: "How did the four IMF factors (February 2018) explain the improvement in Australia's CAD in the 2010s?",
+    back: "IMF (Feb 2018) identified four factors:\n1. Import expenditure decreased (domestic demand contracted more sharply than in major trading partners)\n2. Increased saving by households and businesses since the GFC → reduced need to borrow overseas\n3. Tighter regulatory requirements + changed international lending conditions → banks held more funds in reserves\n4. Servicing costs lower due to sustained low global interest rates",
+    lastReviewed: null, nextReview: now, correctStreak: 0, easeFactor: 2.5, interval: 0,
+  },
+];
+
+export const questions: PracticeQuestion[] = [
+  {
+    id: 'ch06-q001', chapter: '4.6', topic: "Consequences of High CAD", type: 'mcq', difficulty: 1, marks: 1,
+    question: "The IMF considers a current account deficit 'too high' if it averages over what percentage of GDP in the medium to long term?",
+    options: [
+      { label: 'a', text: '2% of GDP' },
+      { label: 'b', text: '3% of GDP' },
+      { label: 'c', text: '4% of GDP' },
+      { label: 'd', text: '6% of GDP' },
+    ],
+    correctOption: 'c',
+  },
+  {
+    id: 'ch06-q002', chapter: '4.6', topic: "Consequences of High CAD", type: 'mcq', difficulty: 2, marks: 1,
+    question: "A 'balance of payments constraint' means that:",
+    options: [
+      { label: 'a', text: 'The BOP must always equal zero under a floating exchange rate' },
+      { label: 'b', text: 'An economy must limit its growth to the level at which the CAD remains sustainable' },
+      { label: 'c', text: 'Foreign liabilities cannot exceed 55% of GDP' },
+      { label: 'd', text: 'The government must maintain a budget surplus to offset the CAD' },
+    ],
+    correctOption: 'b',
+  },
+  {
+    id: 'ch06-q003', chapter: '4.6', topic: "Consequences of High CAD", type: 'mcq', difficulty: 2, marks: 1,
+    question: "According to the IMF, if Australia maintains a CAD of 2.5–3% of GDP, foreign liabilities would stabilise at approximately:",
+    options: [
+      { label: 'a', text: '35% of GDP' },
+      { label: 'b', text: '45% of GDP' },
+      { label: 'c', text: '55% of GDP' },
+      { label: 'd', text: '70% of GDP' },
+    ],
+    correctOption: 'c',
+  },
+  {
+    id: 'ch06-q004', chapter: '4.6', topic: "Consequences of High CAD", type: 'short', difficulty: 3, marks: 8,
+    question: "Discuss four potential consequences of a sustained high current account deficit for the Australian economy.",
+    keyPoints: [
+      "Growth of foreign liabilities: CAD financed by KFA inflows → accumulation of debt and equity; lenders may become reluctant",
+      "Increased servicing costs: high liabilities → larger NPY outflows; risk premium raises interest rates → worsens CAD further",
+      "Exchange rate volatility: loss of investor confidence → depreciation → uncertainty for businesses; valuation effect worsens NPY",
+      "Constraint on economic growth: higher growth → more imports → worse CAD → 'speed limit' on growth",
+      "Contractionary policy: government tightens fiscal/monetary policy in response → reduces short-term growth",
+      "Loss of investor confidence: sudden shift in market sentiment → economic crisis; Argentina example since 2018",
+      "IMF: CAD 'too high' if over 4% of GDP medium term; record 6.6% in 2007-08",
+    ],
+    modelAnswer: "A sustained high current account deficit creates four key risks for the Australian economy. First, it leads to the growth of foreign liabilities. Each year's CAD must be financed by a KFA surplus — foreign debt or sales of equity in Australian assets. Over time these liabilities accumulate. If they grow very large, overseas lenders may become reluctant to lend to Australia, creating a potential funding crisis. Second, it increases servicing costs. Larger foreign liabilities generate larger interest and dividend outflows on the net primary income account, worsening the current account deficit itself. Foreign lenders may also demand a risk premium, raising Australian interest rates and compounding the problem. Third, a high CAD can cause exchange rate volatility. If international investors lose confidence in the sustainability of Australia's external position, demand for the A$ may fall, causing depreciation. While depreciation can help improve the BOGS, it also increases the A$ value of foreign-currency-denominated debt, worsening servicing costs. Fourth, a high CAD can become a constraint on economic growth. Higher economic growth generally increases imports and worsens the CAD. An economy with a CAD problem is therefore forced to limit its growth to the level at which the deficit remains sustainable — effectively imposing a 'speed limit' on the economy's growth rate relative to what its productive capacity might otherwise allow.",
+  },
+  {
+    id: 'ch06-q005', chapter: '4.6', topic: "Consequences of High CAD", type: 'short', difficulty: 3, marks: 6,
+    question: "Some economists argue that a high current account deficit is not necessarily harmful. Evaluate this view in the context of Australia's experience.",
+    keyPoints: [
+      "Argument for: if government not contributing, CAD reflects rational private market transactions; borrowing can fund investment and growth",
+      "Argument for: Australia's high CAD not caused major crisis — natural resource wealth underpins export growth; era of globalisation",
+      "Four IMF factors (2018) explain 2010s improvement; 2019-20 first surplus since 1973",
+      "Counter: risks are real — Argentina example (recurring crises since 2018); investor confidence can change suddenly",
+      "Brain and Manning ('Credit Code Red', 2017): country can sustain imbalance for many years before it suddenly becomes a problem",
+      "Future vulnerabilities: adverse China developments; commodity price falls; rising global interest rates; changed credit conditions",
+      "Balanced view: a CAD is manageable if kept at 2.5-3% of GDP (foreign liabilities ~55% of GDP per IMF); becomes risky if persistently above 4-6%",
+    ],
+    modelAnswer: "Some economists argue that a high CAD is not inherently harmful. If the government is not contributing to the deficit, external imbalances simply reflect private agents making rational decisions to borrow and invest. Moreover, borrowing from overseas can fund productive investment, boosting long-run growth — the CAD may be the price of a higher standard of living. Australia's experience lends some support to this view: despite decades of high CADs, Australia has not experienced the kind of balance of payments crisis seen in other countries, largely because natural resource wealth underpins strong export prospects and because the era of globalisation has made financial markets more willing to accept external imbalances. The CAD improved significantly during the 2010s, and Australia achieved its first current account surplus since 1973 in 2019-20. However, the view that a high CAD is harmless is incomplete. The risks are real: Argentina's recurrent crises since 2018 demonstrate that investor confidence can shift suddenly, triggering an economic crisis for heavily indebted economies. Brain and Manning's 2017 report 'Credit Code Red' warned that a country may sustain an external imbalance for many years before it suddenly becomes a major problem. Australia faces potential future vulnerabilities — an adverse development in China, a fall in commodity prices, rising global interest rates, or tightening global credit conditions — any of which could rapidly re-open the CAD problem. The IMF's benchmark is useful: a CAD averaging 2.5–3% of GDP stabilises foreign liabilities at around 55% of GDP, which is broadly sustainable. Persistently above 4–6% of GDP, the risks become significant.",
+  },
+];
