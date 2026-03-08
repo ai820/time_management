@@ -41,24 +41,24 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
   };
 
   const optionClass = (label: string) => {
-    if (!revealed) return 'bg-slate-700 hover:bg-slate-600 cursor-pointer border border-slate-600';
-    if (label === current?.correctOption) return 'bg-green-700 border border-green-500';
-    if (label === selectedOption && label !== current?.correctOption) return 'bg-red-700 border border-red-500';
-    return 'bg-slate-700 border border-slate-600 opacity-60';
+    if (!revealed) return 'bg-white hover:bg-blue-50 cursor-pointer border border-gray-200 text-gray-800';
+    if (label === current?.correctOption) return 'bg-green-50 border border-green-400 text-green-800';
+    if (label === selectedOption && label !== current?.correctOption) return 'bg-red-50 border border-red-400 text-red-800';
+    return 'bg-gray-50 border border-gray-200 text-gray-400 opacity-70';
   };
 
   return (
     <div className="min-h-screen p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <button onClick={onBack} className="flex items-center gap-2 text-slate-400 hover:text-white">
+        <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors">
           <ChevronLeft size={20} /> Back
         </button>
         <div className="flex items-center gap-4">
           {score.total > 0 && (
-            <span className="text-sm text-slate-400">
-              Score: <strong className="text-white">{score.correct}/{score.total}</strong>
-              <span className="text-slate-500 ml-1">({Math.round(100 * score.correct / score.total)}%)</span>
+            <span className="text-sm text-gray-400">
+              Score: <strong className="text-gray-900">{score.correct}/{score.total}</strong>
+              <span className="text-gray-400 ml-1">({Math.round(100 * score.correct / score.total)}%)</span>
             </span>
           )}
           <button onClick={generate} className="btn-primary flex items-center gap-2">
@@ -70,8 +70,8 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
       {!current ? (
         <div className="max-w-2xl mx-auto text-center">
           <div className="card">
-            <h2 className="text-xl font-semibold mb-3">Practice Quiz</h2>
-            <p className="text-slate-400 mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">Practice Quiz</h2>
+            <p className="text-gray-400 mb-6">
               Random HSC-style questions from {chapterIds.length > 0 ? `Chapter${chapterIds.length > 1 ? 's' : ''} ${chapterIds.join(', ')}` : 'all chapters'}.
               Includes multiple choice and short answer questions.
             </p>
@@ -86,18 +86,18 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
           <div className="card">
             <div className="flex items-center gap-2 mb-4">
               <span className={`badge-chapter`}>{current.chapter}</span>
-              <span className="text-slate-400 text-sm">{current.topic}</span>
+              <span className="text-gray-500 text-sm">{current.topic}</span>
               <span className="ml-auto flex items-center gap-2">
-                <span className={`px-2 py-0.5 rounded text-xs font-medium ${current.type === 'mcq' ? 'bg-blue-600/20 text-blue-400' : 'bg-purple-600/20 text-purple-400'}`}>
+                <span className={`px-2 py-0.5 rounded text-xs font-medium ${current.type === 'mcq' ? 'bg-blue-50 text-blue-700' : 'bg-purple-50 text-purple-700'}`}>
                   {current.type === 'mcq' ? 'Multiple Choice' : `Short Answer`}
                 </span>
                 {current.marks && (
-                  <span className="text-xs text-slate-500">{current.marks} mark{current.marks !== 1 ? 's' : ''}</span>
+                  <span className="text-xs text-gray-400">{current.marks} mark{current.marks !== 1 ? 's' : ''}</span>
                 )}
               </span>
             </div>
 
-            <p className="text-lg font-medium mb-6 leading-relaxed">{current.question}</p>
+            <p className="text-lg font-medium text-gray-900 mb-6 leading-relaxed">{current.question}</p>
 
             {/* MCQ options */}
             {current.type === 'mcq' && current.options && (
@@ -108,13 +108,13 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
                     onClick={() => handleMCQ(opt.label)}
                     className={`w-full text-left px-4 py-3 rounded-xl transition-colors ${optionClass(opt.label)}`}
                   >
-                    <span className="font-medium mr-3 text-slate-300">({opt.label})</span>
+                    <span className="font-medium mr-3 text-gray-500">({opt.label})</span>
                     {opt.text}
                     {revealed && opt.label === current.correctOption && (
-                      <Check size={16} className="inline ml-2 text-green-400" />
+                      <Check size={16} className="inline ml-2 text-green-700" />
                     )}
                     {revealed && opt.label === selectedOption && opt.label !== current.correctOption && (
-                      <X size={16} className="inline ml-2 text-red-400" />
+                      <X size={16} className="inline ml-2 text-red-700" />
                     )}
                   </button>
                 ))}
@@ -127,18 +127,18 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
                 {/* Key points toggle */}
                 <button
                   onClick={() => setShowKeyPoints(!showKeyPoints)}
-                  className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 text-sm"
+                  className="flex items-center gap-2 text-amber-700 hover:text-amber-800 text-sm transition-colors"
                 >
                   <Lightbulb size={16} />
                   {showKeyPoints ? 'Hide' : 'Show'} key points
                 </button>
                 {showKeyPoints && current.keyPoints && (
-                  <div className="bg-yellow-900/20 border border-yellow-700/30 rounded-xl p-4">
-                    <p className="text-xs font-semibold text-yellow-400 mb-2 uppercase tracking-wide">Key Points to Include</p>
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <p className="text-xs font-semibold text-amber-700 mb-2 uppercase tracking-wide">Key Points to Include</p>
                     <ul className="space-y-1">
                       {current.keyPoints.map((kp, i) => (
-                        <li key={i} className="text-sm text-slate-300 flex items-start gap-2">
-                          <span className="text-yellow-400 mt-0.5">•</span>
+                        <li key={i} className="text-sm text-gray-700 flex items-start gap-2">
+                          <span className="text-amber-700 mt-0.5">•</span>
                           {kp}
                         </li>
                       ))}
@@ -149,15 +149,15 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
                 {/* Model answer toggle */}
                 <button
                   onClick={() => setShowModel(!showModel)}
-                  className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm"
+                  className="flex items-center gap-2 text-emerald-700 hover:text-emerald-800 text-sm transition-colors"
                 >
                   <ChevronDown size={16} className={`transition-transform ${showModel ? 'rotate-180' : ''}`} />
                   {showModel ? 'Hide' : 'Show'} model answer
                 </button>
                 {showModel && current.modelAnswer && (
-                  <div className="bg-emerald-900/20 border border-emerald-700/30 rounded-xl p-4">
-                    <p className="text-xs font-semibold text-emerald-400 mb-2 uppercase tracking-wide">Model Answer</p>
-                    <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line">{current.modelAnswer}</p>
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                    <p className="text-xs font-semibold text-emerald-700 mb-2 uppercase tracking-wide">Model Answer</p>
+                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{current.modelAnswer}</p>
                   </div>
                 )}
               </div>
@@ -166,12 +166,12 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
 
           {/* MCQ result */}
           {current.type === 'mcq' && revealed && (
-            <div className={`card border ${selectedOption === current.correctOption ? 'border-green-600/50 bg-green-900/10' : 'border-red-600/50 bg-red-900/10'}`}>
+            <div className={`card border ${selectedOption === current.correctOption ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50'}`}>
               <div className="flex items-center justify-between">
-                <span className={`font-medium ${selectedOption === current.correctOption ? 'text-green-400' : 'text-red-400'}`}>
+                <span className={`font-medium ${selectedOption === current.correctOption ? 'text-green-700' : 'text-red-700'}`}>
                   {selectedOption === current.correctOption ? '✓ Correct!' : '✗ Incorrect'}
                   {selectedOption !== current.correctOption && (
-                    <span className="text-slate-400 ml-2 font-normal">
+                    <span className="text-gray-500 ml-2 font-normal">
                       Answer: ({current.correctOption}) {current.options?.find(o => o.label === current.correctOption)?.text}
                     </span>
                   )}

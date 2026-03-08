@@ -25,6 +25,7 @@ export interface FlashCard {
   correctStreak: number;
   easeFactor: number;
   interval: number; // days
+  detail?: string; // optional full-paragraph explanation shown on expand
 }
 
 // Practice question (short answer / MCQ)
