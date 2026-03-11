@@ -48,13 +48,13 @@ export default function QuizMode({ chapterIds, onBack }: Props) {
   };
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-4 sm:p-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors">
+      <div className="flex items-center justify-between mb-8 gap-3">
+        <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors shrink-0">
           <ChevronLeft size={20} /> Back
         </button>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 flex-wrap justify-end">
           {score.total > 0 && (
             <span className="text-sm text-gray-400">
               Score: <strong className="text-gray-900">{score.correct}/{score.total}</strong>

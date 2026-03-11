@@ -80,13 +80,13 @@ export default function App() {
   const now = Date.now();
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-4 sm:p-6">
       {/* Header */}
       <header className="max-w-4xl mx-auto mb-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-1">Economics Mastery</h1>
-            <p className="text-gray-400">HSC Economics — Topic 2: Australia's Place in the Global Economy</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Economics Mastery</h1>
+            <p className="text-gray-400 text-sm sm:text-base">HSC Economics — Topic 2: Australia's Place in the Global Economy</p>
           </div>
           <div className="flex items-center gap-3 text-sm">
             {streak > 0 && (

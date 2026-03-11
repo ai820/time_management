@@ -24,7 +24,7 @@ export default function ChapterView({ chapter, onBack, onFlashcards, onQuiz }: P
   const shortCount = questions.filter(q => q.type === 'short').length;
 
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-4 sm:p-6">
       <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-8 transition-colors">
         <ChevronLeft size={20} /> Back to Topics
       </button>
@@ -32,7 +32,7 @@ export default function ChapterView({ chapter, onBack, onFlashcards, onQuiz }: P
       {/* Chapter header */}
       <div className="max-w-3xl mx-auto mb-8">
         <div className={`w-12 h-1.5 rounded-full ${chapter.color} mb-4`} />
-        <h1 className="text-3xl font-bold text-gray-900 mb-1">{chapter.title}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">{chapter.title}</h1>
         <p className="text-gray-400">{chapter.subtitle}</p>
       </div>
 

@@ -91,7 +91,7 @@ export default function FlashcardDeck({ chapterIds, onBack }: Props) {
 
   if (!currentCard && dueCount === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
+      <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
         <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-8 transition-colors">
           <ChevronLeft size={20} /> Back
         </button>
@@ -121,7 +121,7 @@ export default function FlashcardDeck({ chapterIds, onBack }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <button onClick={onBack} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors">
@@ -220,17 +220,17 @@ export default function FlashcardDeck({ chapterIds, onBack }: Props) {
 
           {/* Answer quality buttons */}
           {isFlipped && (
-            <div className="mt-5 flex justify-center gap-3">
-              <button onClick={() => handleAnswer(1)} className="flex items-center gap-2 px-5 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-medium transition-colors shadow-sm">
+            <div className="mt-5 grid grid-cols-2 sm:flex sm:justify-center gap-3">
+              <button onClick={() => handleAnswer(1)} className="flex items-center justify-center gap-2 px-4 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-medium transition-colors shadow-sm">
                 <X size={17} /> Again
               </button>
-              <button onClick={() => handleAnswer(3)} className="flex items-center gap-2 px-5 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-medium transition-colors shadow-sm">
+              <button onClick={() => handleAnswer(3)} className="flex items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-medium transition-colors shadow-sm">
                 <RotateCcw size={17} /> Hard
               </button>
-              <button onClick={() => handleAnswer(4)} className="flex items-center gap-2 px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-medium transition-colors shadow-sm">
+              <button onClick={() => handleAnswer(4)} className="flex items-center justify-center gap-2 px-4 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-medium transition-colors shadow-sm">
                 <Check size={17} /> Good
               </button>
-              <button onClick={() => handleAnswer(5)} className="flex items-center gap-2 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-medium transition-colors shadow-sm">
+              <button onClick={() => handleAnswer(5)} className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-medium transition-colors shadow-sm">
                 <ChevronRight size={17} /> Easy
               </button>
             </div>
