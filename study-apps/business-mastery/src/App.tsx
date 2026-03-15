@@ -1,11 +1,35 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, HelpCircle, Flame, AlertCircle, TrendingUp, ChevronRight } from 'lucide-react';
+import { BookOpen, HelpCircle, Flame, AlertCircle, TrendingUp, ChevronRight, Briefcase, BarChart2, Settings2 } from 'lucide-react';
 import { View, ChapterId } from './types';
 import { chapters, allFlashcards, allQuestions } from './data';
 import { loadState, initializeCards, getStreak } from './utils/storage';
 import FlashcardDeck from './components/FlashcardDeck';
 import QuizMode from './components/QuizMode';
 import ChapterView from './components/ChapterView';
+
+const SECTIONS = [
+  {
+    label: 'Role of Financial Management',
+    description: 'Chapter 9 — strategic role, objectives & interdependence',
+    icon: Briefcase,
+    color: 'blue',
+    ids: ['9.2', '9.3', '9.4'] as ChapterId[],
+  },
+  {
+    label: 'Influences on Financial Management',
+    description: 'Chapter 10 — sources of finance, institutions & market factors',
+    icon: BarChart2,
+    color: 'orange',
+    ids: ['10.2', '10.3', '10.4', '10.5'] as ChapterId[],
+  },
+  {
+    label: 'Processes of Financial Management',
+    description: 'Chapter 11 — planning, ratios, reporting & ethics',
+    icon: Settings2,
+    color: 'violet',
+    ids: ['11.2', '11.3', '11.4', '11.5', '11.6', '11.7', '11.8'] as ChapterId[],
+  },
+];
 
 export default function App() {
   const [view, setView] = useState<View>('home');
@@ -140,59 +164,127 @@ export default function App() {
           </div>
         </section>
 
-        {/* Chapter list */}
-        <section>
-          <h2 className="text-lg font-semibold text-gray-600 mb-3">
-            Topic 3 — Finance Chapters
-          </h2>
-          <div className="grid gap-3">
-            {chapters.map(chapter => {
-              const chCards = state.flashcards.filter(c => c.chapter === chapter.id);
-              const due = chCards.filter(c => c.nextReview <= now).length;
-              const mastered = chCards.filter(c => c.correctStreak >= 3).length;
-              const progress = chCards.length > 0 ? Math.round((mastered / chCards.length) * 100) : 0;
-              const qCount = allQuestions.filter(q => q.chapter === chapter.id).length;
+        {/* Three assessment sections */}
+        {SECTIONS.map(section => {
+          const sectionChapters = chapters.filter(c => section.ids.includes(c.id));
+          const sectionCards = state.flashcards.filter(c => section.ids.includes(c.chapter as ChapterId));
+          const sectionDue = sectionCards.filter(c => c.nextReview <= now).length;
+          const sectionQs = allQuestions.filter(q => section.ids.includes(q.chapter as ChapterId)).length;
+          const Icon = section.icon;
+          const colorMap: Record<string, string> = {
+            blue: 'bg-blue-600 hover:bg-blue-700',
+            orange: 'bg-orange-600 hover:bg-orange-700',
+            violet: 'bg-violet-600 hover:bg-violet-700',
+          };
+          const borderMap: Record<string, string> = {
+            blue: 'border-blue-200 bg-blue-50/30',
+            orange: 'border-orange-200 bg-orange-50/30',
+            violet: 'border-violet-200 bg-violet-50/30',
+          };
+          const iconBgMap: Record<string, string> = {
+            blue: 'bg-blue-100 text-blue-700',
+            orange: 'bg-orange-100 text-orange-700',
+            violet: 'bg-violet-100 text-violet-700',
+          };
+          const headingMap: Record<string, string> = {
+            blue: 'text-blue-900',
+            orange: 'text-orange-900',
+            violet: 'text-violet-900',
+          };
 
-              return (
-                <button
-                  key={chapter.id}
-                  onClick={() => openChapter(chapter.id)}
-                  className="card text-left hover:border-blue-300 hover:shadow-md transition-all group flex items-center gap-4"
-                >
-                  <div className={`w-1 self-stretch rounded-full ${chapter.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <h3 className="font-semibold text-gray-900">{chapter.title}</h3>
-                        <p className="text-gray-400 text-sm mt-0.5">{chapter.subtitle}</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs shrink-0">
-                        {due > 0 && (
-                          <span className="px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-full">
-                            {due} due
-                          </span>
+          return (
+            <section key={section.label}>
+              {/* Section header card */}
+              <div className={`card border ${borderMap[section.color]} mb-3`}>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${iconBgMap[section.color]}`}>
+                      <Icon size={20} />
+                    </div>
+                    <div>
+                      <h2 className={`font-bold ${headingMap[section.color]}`}>{section.label}</h2>
+                      <p className="text-gray-400 text-xs mt-0.5">{section.description}</p>
+                      <div className="flex items-center gap-2 mt-1 text-xs text-gray-400">
+                        <span>{sectionCards.length} flashcards</span>
+                        <span>·</span>
+                        <span>{sectionQs} questions</span>
+                        {sectionDue > 0 && (
+                          <>
+                            <span>·</span>
+                            <span className="text-amber-600 font-medium">{sectionDue} due</span>
+                          </>
                         )}
-                        <span className="text-gray-400">{qCount} Qs</span>
                       </div>
                     </div>
-                    {chCards.length > 0 && (
-                      <div className="mt-2 flex items-center gap-2">
-                        <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full ${chapter.color} transition-all`}
-                            style={{ width: `${progress}%` }}
-                          />
-                        </div>
-                        <span className="text-xs text-gray-400">{progress}%</span>
-                      </div>
-                    )}
                   </div>
-                  <ChevronRight size={18} className="text-gray-300 group-hover:text-gray-500 transition-colors shrink-0" />
-                </button>
-              );
-            })}
-          </div>
-        </section>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      onClick={() => openFlashcards(section.ids)}
+                      className={`flex items-center gap-1.5 px-3 py-2 ${colorMap[section.color]} text-white rounded-xl font-medium transition-colors text-xs`}
+                    >
+                      <BookOpen size={14} /> Flashcards
+                    </button>
+                    <button
+                      onClick={() => openQuiz(section.ids)}
+                      className="flex items-center gap-1.5 px-3 py-2 bg-gray-700 hover:bg-gray-800 text-white rounded-xl font-medium transition-colors text-xs"
+                    >
+                      <HelpCircle size={14} /> Quiz
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chapters within section */}
+              <div className="grid gap-2 ml-2">
+                {sectionChapters.map(chapter => {
+                  const chCards = state.flashcards.filter(c => c.chapter === chapter.id);
+                  const due = chCards.filter(c => c.nextReview <= now).length;
+                  const mastered = chCards.filter(c => c.correctStreak >= 3).length;
+                  const progress = chCards.length > 0 ? Math.round((mastered / chCards.length) * 100) : 0;
+                  const qCount = allQuestions.filter(q => q.chapter === chapter.id).length;
+
+                  return (
+                    <button
+                      key={chapter.id}
+                      onClick={() => openChapter(chapter.id)}
+                      className="card text-left hover:border-blue-300 hover:shadow-md transition-all group flex items-center gap-4"
+                    >
+                      <div className={`w-1 self-stretch rounded-full ${chapter.color} opacity-80 group-hover:opacity-100 transition-opacity`} />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <h3 className="font-semibold text-gray-900 text-sm">{chapter.title}</h3>
+                            <p className="text-gray-400 text-xs mt-0.5">{chapter.subtitle}</p>
+                          </div>
+                          <div className="flex items-center gap-2 text-xs shrink-0">
+                            {due > 0 && (
+                              <span className="px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-200 rounded-full">
+                                {due} due
+                              </span>
+                            )}
+                            <span className="text-gray-400">{qCount} Qs</span>
+                          </div>
+                        </div>
+                        {chCards.length > 0 && (
+                          <div className="mt-2 flex items-center gap-2">
+                            <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full ${chapter.color} transition-all`}
+                                style={{ width: `${progress}%` }}
+                              />
+                            </div>
+                            <span className="text-xs text-gray-400">{progress}%</span>
+                          </div>
+                        )}
+                      </div>
+                      <ChevronRight size={18} className="text-gray-300 group-hover:text-gray-500 transition-colors shrink-0" />
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
 
         {/* Study tips */}
         <section>
